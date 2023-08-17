@@ -17,8 +17,6 @@ data "aws_ami" "app_ami" {
 
 data "aws_vpc" "dafault" {
   default = true
-
-
 }
 
 
@@ -53,7 +51,7 @@ resource "aws_security_group" "blog" {
   name        = "blog"
   description = "Allow http and https in. Allow everything out"
 
-  vpc_id = data.aws.vpc.default.id
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_security_group_rule" "blog_http_in" {
